@@ -8,7 +8,7 @@ target 'PitcherApp' do
   # Pods for PitcherApp
   pod 'PureLayout'
   pod 'PromiseKit'
-  pod 'SoundTouch'
+  pod 'AudioKit/Core'
 
   target 'PitcherAppTests' do
     inherit! :search_paths

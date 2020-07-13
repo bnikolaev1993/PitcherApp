@@ -27,6 +27,7 @@ class ApplyFilterView: BaseView<ApplyFilterViewModel> {
         collectionView.backgroundColor = .red
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
 
         collectionView.setCollectionViewLayout(layout, animated: false)
         collectionView.backgroundColor = .clear

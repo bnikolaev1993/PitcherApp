@@ -77,15 +77,16 @@ class ApplyFilterViewController: BaseViewController<ApplyFilterViewModel, ApplyF
     }
 
     @objc func shareVideo() {
+        avPlayerController.player?.pause()
         guard let videoURL = mainView.viewModel.currentVideoURL else {
             return
         }
 
-        let activityItems: [Any] = [videoURL, "Check this out!"]
+        let activityItems: [Any] = [videoURL, "Share this video with your bestie!"]
         let activityController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
 
-        activityController.popoverPresentationController?.sourceView = view
-        activityController.popoverPresentationController?.sourceRect = view.frame
+        activityController.popoverPresentationController?.sourceView = mainView
+        activityController.popoverPresentationController?.sourceRect = mainView.frame
 
         self.present(activityController, animated: true, completion: nil)
     }
@@ -162,4 +163,3 @@ extension ApplyFilterViewController: UICollectionViewDelegateFlowLayout {
         return 10
     }
 }
-
