@@ -11,40 +11,46 @@ import UIKit
 
 class ApplyFilterView: BaseView<ApplyFilterViewModel> {
 
-    var avPlayer: AVPlayer!
-    var videoPlayerView: UIView = UIView.newAutoLayout()
-    var addFilterButton: UIButton = UIButton.newAutoLayout()
+    var avPlayer: AVPlayer?
+    var videoPlayerView = UIView.newAutoLayout()
+    var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+    var contentStackView = UIStackView.newAutoLayout()
 
     override func addComponents() {
-        addSubview(addFilterButton)
+        addSubview(contentStackView)
     }
 
     override func configureComponents() {
         avPlayer = AVPlayer(url: viewModel.videoManager.videoURL)
         videoPlayerView.backgroundColor = .black
 
-        addFilterButton.setTitle("Add Filter", for: .normal)
-        addFilterButton.titleLabel?.textAlignment = .center
-        addFilterButton.setTitleColor(.black, for: .normal)
+        collectionView.backgroundColor = .red
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+
+        collectionView.setCollectionViewLayout(layout, animated: false)
+        collectionView.backgroundColor = .clear
+        collectionView.clipsToBounds = false
+        collectionView.alwaysBounceHorizontal = true
+
+        contentStackView.alignment = .fill
+        contentStackView.distribution = .fill
+        contentStackView.axis = .vertical
     }
 
     func addPlayer(view: UIView) {
         videoPlayerView = view
-        addSubview(videoPlayerView)
+        contentStackView.addArrangedSubview(videoPlayerView)
+        contentStackView.addArrangedSubview(collectionView)
+        setNeedsLayout()
     }
 
     override func updateConstraints() {
         if !didSetupConstraints {
-            videoPlayerView.autoPinEdge(toSuperviewEdge: .top, withInset: 20)
-            videoPlayerView.autoPinEdge(toSuperviewEdge: .left)
-            videoPlayerView.autoPinEdge(toSuperviewEdge: .right)
-            videoPlayerView.autoSetDimension(.height, toSize: 500)
+            contentStackView.autoPinEdgesToSuperviewEdges()
 
-            addFilterButton.autoPinEdge(toSuperviewEdge: .bottom)
-            addFilterButton.autoPinEdge(toSuperviewEdge: .left, withInset: 20)
-            addFilterButton.autoPinEdge(toSuperviewEdge: .bottom, withInset: 20)
-            addFilterButton.autoSetDimension(.height, toSize: 40)
-
+            collectionView.autoPinEdge(.top, to: .bottom, of: videoPlayerView, withOffset: 20)
+            collectionView.autoSetDimension(.height, toSize: 200)
         }
         super.updateConstraints()
     }

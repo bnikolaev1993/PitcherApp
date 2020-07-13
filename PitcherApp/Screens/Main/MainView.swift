@@ -15,7 +15,10 @@ class MainView: BaseView<BaseViewModel> {
     @objc var addButtonPressed: (() -> Void)?
 
     override func configureComponents() {
+        backgroundColor = .white
+
         addVideoButton.setTitle("Add Video", for: .normal)
+        addVideoButton.setImage(UIImage(systemName: "camera"), for: .normal)
         addVideoButton.setTitleColor(.black, for: .normal)
         addVideoButton.addTarget(self, action: #selector(addVideoButtonPressed), for: .touchUpInside)
     }
