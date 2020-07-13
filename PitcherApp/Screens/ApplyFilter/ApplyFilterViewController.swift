@@ -39,6 +39,8 @@ class ApplyFilterViewController: BaseViewController<ApplyFilterViewModel, ApplyF
         mainView.collectionView.dataSource = self
         mainView.collectionView.register(CustomCollectionViewCell.self,
                                          forCellWithReuseIdentifier: CustomCollectionViewCell.cellIdentifier)
+        mainView.collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .left)
+
 
         avPlayerController.player = mainView.avPlayer
         avPlayerController.view.frame = .zero
@@ -101,11 +103,20 @@ extension ApplyFilterViewController: UICollectionViewDelegate, UICollectionViewD
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.cellIdentifier,
-                                                      for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.cellIdentifier,
+                                                            for: indexPath) as? CustomCollectionViewCell else {
+                                                                return UICollectionViewCell()
+        }
         let preset = mainView.viewModel.presets[indexPath.row]
-        if let reuseCell = cell as? CustomCollectionViewCell {
-            reuseCell.configure(preset: preset)
+        cell.configure(preset: preset)
+
+        if cell.isSelected {
+            cell.setSelected()
+
+            // Make a Human image white when selected
+            if indexPath.row == 0 {
+                cell.imageView.image = cell.imageView.image?.maskWithColor(color: .white)
+            }
         }
 
         return cell
@@ -129,9 +140,12 @@ extension ApplyFilterViewController: UICollectionViewDelegate, UICollectionViewD
             return
         }
         cell.setSelected()
+
+        // Make a Human image white when selected
         if indexPath.row == 0 {
             cell.imageView.image = cell.imageView.image?.maskWithColor(color: .white)
         }
+        
         let configuration = mainView.viewModel.presets[indexPath.row].configuration
         avPlayerController.player?.pause()
         mainView.viewModel.applyFilter(configuration: configuration) { [weak self] url in
