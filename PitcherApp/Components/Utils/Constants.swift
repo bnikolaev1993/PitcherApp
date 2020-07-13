@@ -13,4 +13,6 @@ typealias AVTulip = (video: URL, audio: URL)
 class Constants {
     static let filteredAudioURL = URL(string: NSTemporaryDirectory() + "newAudioOut.caf")
     static let newFilteredFilePath = NSTemporaryDirectory() + "newFiltered.mov"
+    static let extractedVideo = NSTemporaryDirectory() + "extractedVideo.mov"
+    static let extractedAudio = NSTemporaryDirectory() + "extractedAudio.m4a"
 }

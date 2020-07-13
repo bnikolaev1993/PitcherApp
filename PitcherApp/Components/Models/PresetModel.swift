@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+class PresetModel {
+    let name: String
+    let image: String
+    let configuration: ConfigurationModel
+
+    init(name: String, image: String, configurationModel: ConfigurationModel) {
+        self.name = name
+        self.image = image
+        self.configuration = configurationModel
+    }
+}

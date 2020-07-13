@@ -22,6 +22,7 @@ class RemoveAudioFileFromVideoUseCase: AsyncUseCase<RemoveAudioFileFromVideoUseC
             return
         }
 
+        // VIDEO
         // Extracting video
         do {
             _ = try compositionVideoTrack?.insertTimeRange(timeRange, of: sourceVideoTrack, at: .zero)
@@ -54,13 +55,13 @@ class RemoveAudioFileFromVideoUseCase: AsyncUseCase<RemoveAudioFileFromVideoUseC
         let input = SaveAssetUseCaseInput(asset: videoComposition,
                                           presetName: AVAssetExportPresetHighestQuality,
                                           outputFile: .mov,
-                                          path: NSTemporaryDirectory() + "out.mov")
-        _ = SaveAssetUseCase(input: input).actWith(.none).done { videoUrl in
+                                          path: Constants.extractedVideo)
+        _ = SaveAssetUseCase(input: input).act().done { videoUrl in
             let input = SaveAssetUseCaseInput(asset: audioComposition,
                                               presetName: AVAssetExportPresetAppleM4A,
                                               outputFile: .m4a,
-                                              path: NSTemporaryDirectory() + "mout.m4a")
-            _ = SaveAssetUseCase(input: input).actWith(.none).done { audioUrl in
+                                              path: Constants.extractedAudio)
+            _ = SaveAssetUseCase(input: input).act().done { audioUrl in
                 resolver.fulfill((video: videoUrl, audio: audioUrl))
             } .catch {
                 resolver.reject($0)

@@ -25,7 +25,7 @@ class CopyVideoAssetUseCase: AsyncUseCase<CopyVideoAssetUseCaseInput, URL> {
                                           presetName: AVAssetExportPresetHighestQuality,
                                           outputFile: .mov,
                                           path: NSTemporaryDirectory() + "out.mov")
-        _ = SaveAssetUseCase(input: input).actWith(.none).done {
+        _ = SaveAssetUseCase(input: input).act().done {
             resolver.fulfill($0)
         } .catch {
             resolver.reject($0)

@@ -60,7 +60,7 @@ class MergeAudioAndVideoUseCase: AsyncUseCase<MergeAudioAndVideoUseCaseInput, UR
                                           presetName: AVAssetExportPresetHighestQuality,
                                           outputFile: .mov,
                                           path: Constants.newFilteredFilePath)
-        _ = SaveAssetUseCase(input: input).actWith(.none).done { videoUrl in
+        _ = SaveAssetUseCase(input: input).act().done { videoUrl in
             resolver.fulfill(videoUrl)
         }
     }

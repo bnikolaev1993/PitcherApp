@@ -40,7 +40,6 @@ class SaveAssetUseCase: AsyncUseCase<SaveAssetUseCaseInput, URL> {
         let exportSession = AVAssetExportSession(asset: input.asset, presetName: input.presetName)
         exportSession?.outputFileType = input.outputFile
         exportSession?.outputURL = outputUrl
-        exportSession?.shouldOptimizeForNetworkUse = true
 
         // Export file
         exportSession?.exportAsynchronously {

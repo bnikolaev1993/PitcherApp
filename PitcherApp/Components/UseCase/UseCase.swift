@@ -15,18 +15,6 @@ public enum UseCaseTimeOutSettings {
     case noTimeOut
 }
 
-/// When executing a UseCase we can set what kind of UseCaseNotification we expected the UseCase to notify
-public  enum UseCaseActType {
-    ///UseCase execution will propagate UseCaseNotification for start,completed and errors events
-    case progressAndErrors
-    ///UseCase execution will propagate UseCaseNotification errors events only
-    case errors
-    ///UseCase execution will propagate UseCaseNotification for start and completed events
-    case progress
-    ///UseCase execution wont propagate any UseCaseNotification
-    case none
-}
-
 open class UseCase<I, O> {
   public  typealias InputType = I
   public  typealias ReturnType = O
@@ -77,7 +65,6 @@ open class AsyncUseCase<I, O>: UseCase<I, O> {
 
     fileprivate var (promise, resolver) = Promise<ReturnType>.pending()
     fileprivate var retainCycle: AsyncUseCase<I, O>?
-    fileprivate var actType = UseCaseActType.none
 
     public init(input: InputType, timeoutSettings: UseCaseTimeOutSettings) {
         self.timeoutSettings = timeoutSettings
@@ -104,7 +91,7 @@ open class AsyncUseCase<I, O>: UseCase<I, O> {
     ///
     /// - Returns: Promise<ReturnType>
     @discardableResult
-    private final func act() -> Promise<ReturnType> {
+    final func act() -> Promise<ReturnType> {
 
         promise = Promise<ReturnType> { resolver in
             if let validationError = validate(input: input) {
@@ -116,15 +103,6 @@ open class AsyncUseCase<I, O>: UseCase<I, O> {
         }
 
         return promise
-    }
-
-    /// Start UserCase execution with UseCaseNotification (.useCaseStarted,.useCaseCompleted sequence or .userCaseError if any )  notifications
-    ///
-    /// - Returns: Promise<ReturnType>
-    @discardableResult
-    public func actWith(_ type: UseCaseActType) -> Promise<ReturnType> {
-        actType = type
-        return act()
     }
 
     /// Start UserCase execution with  .userCaseError notified if any error occour

@@ -38,6 +38,8 @@
 		CDCAD10424BC8A11009166EA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCAD10324BC8A11009166EA /* Constants.swift */; };
 		CDCAD10624BC8B81009166EA /* MergeAudioAndVideoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCAD10524BC8B81009166EA /* MergeAudioAndVideoUseCase.swift */; };
 		CDCAD10B24BCC7B6009166EA /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCAD10A24BCC7B6009166EA /* CustomCollectionViewCell.swift */; };
+		CDCAD10D24BCD68C009166EA /* PresetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCAD10C24BCD68C009166EA /* PresetModel.swift */; };
+		CDCAD10F24BCDA54009166EA /* ConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCAD10E24BCDA54009166EA /* ConfigurationModel.swift */; };
 		CDCAD11224BCEBF4009166EA /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCAD11124BCEBF4009166EA /* UIImage+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +91,8 @@
 		CDCAD10324BC8A11009166EA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CDCAD10524BC8B81009166EA /* MergeAudioAndVideoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeAudioAndVideoUseCase.swift; sourceTree = "<group>"; };
 		CDCAD10A24BCC7B6009166EA /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		CDCAD10C24BCD68C009166EA /* PresetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetModel.swift; sourceTree = "<group>"; };
+		CDCAD10E24BCDA54009166EA /* ConfigurationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationModel.swift; sourceTree = "<group>"; };
 		CDCAD11124BCEBF4009166EA /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		ED987415C1D373BCF16B2FB3 /* Pods-PitcherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PitcherApp.release.xcconfig"; path = "Target Support Files/Pods-PitcherApp/Pods-PitcherApp.release.xcconfig"; sourceTree = "<group>"; };
 		FEBE70DABEE2A40EADA65F59 /* Pods_PitcherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PitcherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -221,13 +225,13 @@
 		CDA9F4D824BB6D2F00F9AD85 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				CD37C22E24BBDEDE00673C9B /* Utils */,
-				CD37C22324BBC66300673C9B /* UseCase */,
 				CDA9F4DC24BB6DF400F9AD85 /* Base */,
 				CDCAD11024BCEBDD009166EA /* Extensions */,
 				CDA9F4EC24BB9D4B00F9AD85 /* Models */,
 				CDA9F4D924BB6D3900F9AD85 /* Protocols */,
 				CDCAD10924BCC79D009166EA /* UI */,
+				CD37C22324BBC66300673C9B /* UseCase */,
+				CD37C22E24BBDEDE00673C9B /* Utils */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -268,6 +272,8 @@
 			children = (
 				CDA9F4EF24BB9DC000F9AD85 /* VideoManager.swift */,
 				CD37C22624BBC7B400673C9B /* DomainError.swift */,
+				CDCAD10C24BCD68C009166EA /* PresetModel.swift */,
+				CDCAD10E24BCDA54009166EA /* ConfigurationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -458,6 +464,8 @@
 				CDA9F4B324BB570A00F9AD85 /* MainViewController.swift in Sources */,
 				CDA9F4D124BB5E0800F9AD85 /* ApplyFilterViewController.swift in Sources */,
 				CDA9F4DB24BB6D4800F9AD85 /* CoordinatorProtocol.swift in Sources */,
+				CDCAD10D24BCD68C009166EA /* PresetModel.swift in Sources */,
+				CDCAD10F24BCDA54009166EA /* ConfigurationModel.swift in Sources */,
 				CDCAD10B24BCC7B6009166EA /* CustomCollectionViewCell.swift in Sources */,
 				CDA9F4F024BB9DC000F9AD85 /* VideoManager.swift in Sources */,
 				CDA9F4E924BB9C0B00F9AD85 /* ApplyFilterCoordinator.swift in Sources */,
