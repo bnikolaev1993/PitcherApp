@@ -28,19 +28,20 @@ class MainViewController: BaseViewController<BaseViewModel, MainView>, UIImagePi
     // MARK:- Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
     }
 
     override func setupButtonHandlers() {
-        mainView.addButtonPressed = {
-            self.getMovie()
+        mainView.addButtonPressed = { sourceType in
+            self.getVideo(with: sourceType)
         }
     }
 
-    func getMovie() {
+    func getVideo(with sourceType: UIImagePickerController.SourceType) {
         selectVideoFromLibraryVC.delegate = self
         selectVideoFromLibraryVC.mediaTypes = [kUTTypeMovie as String]
         selectVideoFromLibraryVC.allowsEditing = false
-        selectVideoFromLibraryVC.sourceType = .photoLibrary
+        selectVideoFromLibraryVC.sourceType = sourceType
 
         present(selectVideoFromLibraryVC, animated: true, completion: nil)
     }
@@ -50,7 +51,6 @@ class MainViewController: BaseViewController<BaseViewModel, MainView>, UIImagePi
         selectVideoFromLibraryVC.dismiss(animated: true) {
             self.coordinator.goToApplyFiltersScreen(videoURL: videoURL)
         }
-
     }
 }
 

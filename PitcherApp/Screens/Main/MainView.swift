@@ -11,22 +11,39 @@ import UIKit
 
 class MainView: BaseView<BaseViewModel> {
 
-    lazy var addVideoButton: UIButton = UIButton(frame: .zero)
-    @objc var addButtonPressed: (() -> Void)?
+    lazy var addVideoFromLibraryButton: UIButton = UIButton.newAutoLayout()
+    lazy var shootVideoButton = UIButton.newAutoLayout()
+    lazy var contentStackView = UIStackView.newAutoLayout()
+    @objc var addButtonPressed: ((UIImagePickerController.SourceType) -> Void)?
 
     override func configureComponents() {
-        addVideoButton.setTitle("Add Video", for: .normal)
-        addVideoButton.setTitleColor(.black, for: .normal)
-        addVideoButton.addTarget(self, action: #selector(addVideoButtonPressed), for: .touchUpInside)
+        backgroundColor = .white
+
+        contentStackView.distribution = .equalSpacing
+        contentStackView.axis = .vertical
+        contentStackView.alignment = .center
+        contentStackView.spacing = 20
+
+        addVideoFromLibraryButton.setTitle("Photo Library", for: .normal)
+        addVideoFromLibraryButton.setImage(UIImage(systemName: "photo"), for: .normal)
+        addVideoFromLibraryButton.setTitleColor(.black, for: .normal)
+        addVideoFromLibraryButton.addTarget(self, action: #selector(addVideoButtonPressed), for: .touchUpInside)
+
+        shootVideoButton.setTitle("Shoot Video", for: .normal)
+        shootVideoButton.setImage(UIImage(systemName: "camera"), for: .normal)
+        shootVideoButton.setTitleColor(.black, for: .normal)
+        shootVideoButton.addTarget(self, action: #selector(shootVideoButtonPressed), for: .touchUpInside)
     }
 
     override func addComponents() {
-        addSubview(addVideoButton)
+        addSubview(contentStackView)
+        contentStackView.addArrangedSubview(shootVideoButton)
+        contentStackView.addArrangedSubview(addVideoFromLibraryButton)
     }
 
     override func updateConstraints() {
         if !didSetupConstraints {
-            addVideoButton.autoCenterInSuperview()
+            contentStackView.autoCenterInSuperview()
 
             didSetupConstraints = true
         }
@@ -34,6 +51,10 @@ class MainView: BaseView<BaseViewModel> {
     }
 
     @objc func addVideoButtonPressed() {
-        addButtonPressed?()
+        addButtonPressed?(.photoLibrary)
+    }
+
+    @objc func shootVideoButtonPressed() {
+        addButtonPressed?(.camera)
     }
 }

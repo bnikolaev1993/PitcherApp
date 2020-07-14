@@ -35,7 +35,7 @@ class MergeAudioAndVideoUseCase: AsyncUseCase<MergeAudioAndVideoUseCaseInput, UR
                                                                  preferredTrackID: kCMPersistentTrackID_Invalid)
 
         guard let aVideoAssetTrack: AVAssetTrack = aVideoAsset.tracks(withMediaType: .video).first, let aAudioAssetTrack: AVAssetTrack = aAudioAsset.tracks(withMediaType: .audio).first else {
-            resolver.reject(DomainError.generalWithDoNothing)
+            resolver.reject(DomainError.presetsAreNotExtracted)
             return
         }
 
@@ -60,7 +60,7 @@ class MergeAudioAndVideoUseCase: AsyncUseCase<MergeAudioAndVideoUseCaseInput, UR
                                           presetName: AVAssetExportPresetHighestQuality,
                                           outputFile: .mov,
                                           path: Constants.newFilteredFilePath)
-        _ = SaveAssetUseCase(input: input).actWith(.none).done { videoUrl in
+        _ = SaveAssetUseCase(input: input).act().done { videoUrl in
             resolver.fulfill(videoUrl)
         }
     }

@@ -32,7 +32,7 @@ class SaveAssetUseCase: AsyncUseCase<SaveAssetUseCaseInput, URL> {
             do {
                 try FileManager.default.removeItem(atPath: outputUrl.path)
             } catch {
-                resolver.reject(DomainError.generalWithMessage("Copied Video is not removed"))
+                resolver.reject(DomainError.videoIsNotCopied)
             }
         }
 
@@ -40,12 +40,11 @@ class SaveAssetUseCase: AsyncUseCase<SaveAssetUseCaseInput, URL> {
         let exportSession = AVAssetExportSession(asset: input.asset, presetName: input.presetName)
         exportSession?.outputFileType = input.outputFile
         exportSession?.outputURL = outputUrl
-        exportSession?.shouldOptimizeForNetworkUse = true
 
         // Export file
         exportSession?.exportAsynchronously {
             guard case exportSession?.status = AVAssetExportSession.Status.completed else {
-                resolver.reject(DomainError.generalWithMessage("Video is not copied"))
+                resolver.reject(DomainError.videoIsNotCopied)
                 return
             }
             resolver.fulfill(outputUrl)

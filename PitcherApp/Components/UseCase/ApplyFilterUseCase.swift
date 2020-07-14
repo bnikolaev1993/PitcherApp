@@ -12,34 +12,37 @@ import Foundation
 import PromiseKit
 
 struct ApplyFilterUseCaseInput {
-    public let audioURL: URL
-    public let videoURL: URL
+     let avURLS: AVTulip
+     let configurationModel: ConfigurationModel
 
-    public init(audioURL: URL, videoURL: URL) {
-        self.audioURL = audioURL
-        self.videoURL = videoURL
+     init(avURLS: AVTulip, configurationModel: ConfigurationModel) {
+        self.avURLS = avURLS
+        self.configurationModel = configurationModel
     }
 }
 
 class ApplyFilterUseCase: AsyncUseCase<ApplyFilterUseCaseInput, (video: URL, audio: AVAsset)> {
     override func executeUseCase(resolver: Resolver<(video: URL, audio: AVAsset)>) {
         do {
-            let audioFile = try AKAudioFile(forReading: input.audioURL)
+            let audioFile = try AKAudioFile(forReading: input.avURLS.audio)
             let akAudioPlayer = try AKAudioPlayer(file: audioFile)
             let timePitch = AKTimePitch(akAudioPlayer)
 
             timePitch.rate = 1.0
-            timePitch.pitch = -800.0
-            timePitch.overlap = 3.0
+            timePitch.pitch = input.configurationModel.pitch
+            timePitch.overlap = input.configurationModel.overlap
 
-            // Add reverberation
-            let reverb = AKReverb()
-            akAudioPlayer >>> reverb >>> timePitch
+            // Add reverberation if needed
+            if input.configurationModel.reverb {
+                let reverb = AKReverb()
+                akAudioPlayer >>> reverb >>> timePitch
+            }
 
             AudioKit.output = timePitch
+            akAudioPlayer.volume = input.configurationModel.volume
 
             guard let url = Constants.filteredAudioURL else {
-                resolver.reject(DomainError.generalWithDoNothing)
+                resolver.reject(DomainError.cantGetTheFinalVideo)
                 return
             }
 
@@ -47,27 +50,26 @@ class ApplyFilterUseCase: AsyncUseCase<ApplyFilterUseCaseInput, (video: URL, aud
                 do {
                     try FileManager.default.removeItem(atPath: url.path)
                 } catch {
-                    resolver.reject(DomainError.generalWithMessage("Copied Video is not removed"))
+                    resolver.reject(DomainError.cantGetTheFinalVideo)
                 }
             }
 
             let outputFile = try AKAudioFile(forWriting: url, settings: [:])
             _ = AudioKit.engine.isRunning
             try AudioKit.renderToFile(outputFile, duration: akAudioPlayer.duration, prerender: {
-                AKSettings.ioBufferDuration = 0.002
                 akAudioPlayer.start()
             }, progress: { progress in
                 if progress == 1.0 {
                     do {
                         let asset = try AKAudioFile(forReading: url)
-                        resolver.fulfill((video: self.input.videoURL, audio: asset.avAsset))
+                        resolver.fulfill((video: self.input.avURLS.video, audio: asset.avAsset))
                     } catch {
-                        resolver.reject(DomainError.generalWithDoNothing)
+                        resolver.reject(DomainError.cantGetTheFinalVideo)
                     }
                 }
             })
         } catch {
-            resolver.reject(DomainError.generalWithDoNothing)
+            resolver.reject(DomainError.cantGetTheFinalVideo)
         }
     }
 }

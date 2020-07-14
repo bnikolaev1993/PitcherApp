@@ -11,10 +11,14 @@
 		98F439633369F863268DDFBB /* Pods_PitcherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEBE70DABEE2A40EADA65F59 /* Pods_PitcherApp.framework */; };
 		CD37C22524BBC67100673C9B /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD37C22424BBC67100673C9B /* UseCase.swift */; };
 		CD37C22724BBC7B400673C9B /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD37C22624BBC7B400673C9B /* DomainError.swift */; };
-		CD37C22924BBC92700673C9B /* RemoveAudioFileFromVideoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD37C22824BBC92700673C9B /* RemoveAudioFileFromVideoUseCase.swift */; };
+		CD37C22924BBC92700673C9B /* ExtractAudioAndVideoFromFileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD37C22824BBC92700673C9B /* ExtractAudioAndVideoFromFileUseCase.swift */; };
 		CD37C22B24BBC9B500673C9B /* CopyVideoAssetUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD37C22A24BBC9B500673C9B /* CopyVideoAssetUseCase.swift */; };
 		CD37C22D24BBDC2F00673C9B /* SaveAssetUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD37C22C24BBDC2F00673C9B /* SaveAssetUseCase.swift */; };
 		CD37C23024BBDF1C00673C9B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD37C22F24BBDF1C00673C9B /* Utils.swift */; };
+		CD8E055224BDEBB700FAE31F /* AsyncUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E055124BDEBB700FAE31F /* AsyncUseCaseTests.swift */; };
+		CD8E055424BDEBED00FAE31F /* MockedAsyncUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E055324BDEBED00FAE31F /* MockedAsyncUseCase.swift */; };
+		CD8E055624BDF52E00FAE31F /* LoaderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E055524BDF52E00FAE31F /* LoaderManager.swift */; };
+		CD8E055924BDF59A00FAE31F /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E055824BDF59A00FAE31F /* LoaderView.swift */; };
 		CDA9F4AF24BB570A00F9AD85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA9F4AE24BB570A00F9AD85 /* AppDelegate.swift */; };
 		CDA9F4B124BB570A00F9AD85 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA9F4B024BB570A00F9AD85 /* SceneDelegate.swift */; };
 		CDA9F4B324BB570A00F9AD85 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA9F4B224BB570A00F9AD85 /* MainViewController.swift */; };
@@ -37,6 +41,10 @@
 		CDCAD10224BC6D6C009166EA /* ApplyFilterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCAD10124BC6D6C009166EA /* ApplyFilterUseCase.swift */; };
 		CDCAD10424BC8A11009166EA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCAD10324BC8A11009166EA /* Constants.swift */; };
 		CDCAD10624BC8B81009166EA /* MergeAudioAndVideoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCAD10524BC8B81009166EA /* MergeAudioAndVideoUseCase.swift */; };
+		CDCAD10B24BCC7B6009166EA /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCAD10A24BCC7B6009166EA /* CustomCollectionViewCell.swift */; };
+		CDCAD10D24BCD68C009166EA /* PresetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCAD10C24BCD68C009166EA /* PresetModel.swift */; };
+		CDCAD10F24BCDA54009166EA /* ConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCAD10E24BCDA54009166EA /* ConfigurationModel.swift */; };
+		CDCAD11224BCEBF4009166EA /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCAD11124BCEBF4009166EA /* UIImage+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,10 +64,14 @@
 		93DF05E829DD767BC0C939DC /* Pods-PitcherAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PitcherAppTests.release.xcconfig"; path = "Target Support Files/Pods-PitcherAppTests/Pods-PitcherAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		CD37C22424BBC67100673C9B /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
 		CD37C22624BBC7B400673C9B /* DomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
-		CD37C22824BBC92700673C9B /* RemoveAudioFileFromVideoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAudioFileFromVideoUseCase.swift; sourceTree = "<group>"; };
+		CD37C22824BBC92700673C9B /* ExtractAudioAndVideoFromFileUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractAudioAndVideoFromFileUseCase.swift; sourceTree = "<group>"; };
 		CD37C22A24BBC9B500673C9B /* CopyVideoAssetUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyVideoAssetUseCase.swift; sourceTree = "<group>"; };
 		CD37C22C24BBDC2F00673C9B /* SaveAssetUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveAssetUseCase.swift; sourceTree = "<group>"; };
 		CD37C22F24BBDF1C00673C9B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		CD8E055124BDEBB700FAE31F /* AsyncUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncUseCaseTests.swift; sourceTree = "<group>"; };
+		CD8E055324BDEBED00FAE31F /* MockedAsyncUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedAsyncUseCase.swift; sourceTree = "<group>"; };
+		CD8E055524BDF52E00FAE31F /* LoaderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderManager.swift; sourceTree = "<group>"; };
+		CD8E055824BDF59A00FAE31F /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		CDA9F4AB24BB570A00F9AD85 /* PitcherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PitcherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDA9F4AE24BB570A00F9AD85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDA9F4B024BB570A00F9AD85 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +98,10 @@
 		CDCAD10124BC6D6C009166EA /* ApplyFilterUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyFilterUseCase.swift; sourceTree = "<group>"; };
 		CDCAD10324BC8A11009166EA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CDCAD10524BC8B81009166EA /* MergeAudioAndVideoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeAudioAndVideoUseCase.swift; sourceTree = "<group>"; };
+		CDCAD10A24BCC7B6009166EA /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		CDCAD10C24BCD68C009166EA /* PresetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetModel.swift; sourceTree = "<group>"; };
+		CDCAD10E24BCDA54009166EA /* ConfigurationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationModel.swift; sourceTree = "<group>"; };
+		CDCAD11124BCEBF4009166EA /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		ED987415C1D373BCF16B2FB3 /* Pods-PitcherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PitcherApp.release.xcconfig"; path = "Target Support Files/Pods-PitcherApp/Pods-PitcherApp.release.xcconfig"; sourceTree = "<group>"; };
 		FEBE70DABEE2A40EADA65F59 /* Pods_PitcherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PitcherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -136,7 +152,7 @@
 				CDCAD10124BC6D6C009166EA /* ApplyFilterUseCase.swift */,
 				CD37C22A24BBC9B500673C9B /* CopyVideoAssetUseCase.swift */,
 				CDCAD10524BC8B81009166EA /* MergeAudioAndVideoUseCase.swift */,
-				CD37C22824BBC92700673C9B /* RemoveAudioFileFromVideoUseCase.swift */,
+				CD37C22824BBC92700673C9B /* ExtractAudioAndVideoFromFileUseCase.swift */,
 				CD37C22C24BBDC2F00673C9B /* SaveAssetUseCase.swift */,
 				CD37C22424BBC67100673C9B /* UseCase.swift */,
 			);
@@ -150,6 +166,24 @@
 				CDCAD10324BC8A11009166EA /* Constants.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		CD8E055024BDEBA200FAE31F /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				CD8E055124BDEBB700FAE31F /* AsyncUseCaseTests.swift */,
+				CD8E055324BDEBED00FAE31F /* MockedAsyncUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		CD8E055724BDF58C00FAE31F /* Loader */ = {
+			isa = PBXGroup;
+			children = (
+				CD8E055524BDF52E00FAE31F /* LoaderManager.swift */,
+				CD8E055824BDF59A00FAE31F /* LoaderView.swift */,
+			);
+			path = Loader;
 			sourceTree = "<group>";
 		};
 		CDA9F4A224BB570A00F9AD85 = {
@@ -189,6 +223,7 @@
 		CDA9F4C424BB570C00F9AD85 /* PitcherAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				CD8E055024BDEBA200FAE31F /* UseCase */,
 				CDA9F4C524BB570C00F9AD85 /* PitcherAppTests.swift */,
 				CDA9F4C724BB570C00F9AD85 /* Info.plist */,
 			);
@@ -217,11 +252,13 @@
 		CDA9F4D824BB6D2F00F9AD85 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				CD37C22E24BBDEDE00673C9B /* Utils */,
-				CD37C22324BBC66300673C9B /* UseCase */,
 				CDA9F4DC24BB6DF400F9AD85 /* Base */,
+				CDCAD11024BCEBDD009166EA /* Extensions */,
 				CDA9F4EC24BB9D4B00F9AD85 /* Models */,
 				CDA9F4D924BB6D3900F9AD85 /* Protocols */,
+				CDCAD10924BCC79D009166EA /* UI */,
+				CD37C22324BBC66300673C9B /* UseCase */,
+				CD37C22E24BBDEDE00673C9B /* Utils */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -262,8 +299,27 @@
 			children = (
 				CDA9F4EF24BB9DC000F9AD85 /* VideoManager.swift */,
 				CD37C22624BBC7B400673C9B /* DomainError.swift */,
+				CDCAD10C24BCD68C009166EA /* PresetModel.swift */,
+				CDCAD10E24BCDA54009166EA /* ConfigurationModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		CDCAD10924BCC79D009166EA /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CDCAD10A24BCC7B6009166EA /* CustomCollectionViewCell.swift */,
+				CD8E055724BDF58C00FAE31F /* Loader */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		CDCAD11024BCEBDD009166EA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CDCAD11124BCEBF4009166EA /* UIImage+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,10 +492,14 @@
 				CDA9F4B324BB570A00F9AD85 /* MainViewController.swift in Sources */,
 				CDA9F4D124BB5E0800F9AD85 /* ApplyFilterViewController.swift in Sources */,
 				CDA9F4DB24BB6D4800F9AD85 /* CoordinatorProtocol.swift in Sources */,
+				CDCAD10D24BCD68C009166EA /* PresetModel.swift in Sources */,
+				CDCAD10F24BCDA54009166EA /* ConfigurationModel.swift in Sources */,
+				CDCAD10B24BCC7B6009166EA /* CustomCollectionViewCell.swift in Sources */,
 				CDA9F4F024BB9DC000F9AD85 /* VideoManager.swift in Sources */,
 				CDA9F4E924BB9C0B00F9AD85 /* ApplyFilterCoordinator.swift in Sources */,
 				CDA9F4F424BBA30F00F9AD85 /* BaseViewModel.swift in Sources */,
 				CD37C22D24BBDC2F00673C9B /* SaveAssetUseCase.swift in Sources */,
+				CD8E055624BDF52E00FAE31F /* LoaderManager.swift in Sources */,
 				CDCAD10224BC6D6C009166EA /* ApplyFilterUseCase.swift in Sources */,
 				CDCAD10624BC8B81009166EA /* MergeAudioAndVideoUseCase.swift in Sources */,
 				CD37C23024BBDF1C00673C9B /* Utils.swift in Sources */,
@@ -453,11 +513,13 @@
 				CDA9F4E024BB74B400F9AD85 /* BaseViewController.swift in Sources */,
 				CDA9F4E224BB908500F9AD85 /* BaseView.swift in Sources */,
 				CDA9F4D724BB6C2000F9AD85 /* MainCoordinator.swift in Sources */,
-				CD37C22924BBC92700673C9B /* RemoveAudioFileFromVideoUseCase.swift in Sources */,
+				CD37C22924BBC92700673C9B /* ExtractAudioAndVideoFromFileUseCase.swift in Sources */,
 				CDA9F4E624BB94A300F9AD85 /* ViewProtocol.swift in Sources */,
 				CD37C22724BBC7B400673C9B /* DomainError.swift in Sources */,
 				CDA9F4B124BB570A00F9AD85 /* SceneDelegate.swift in Sources */,
 				CDCAD10424BC8A11009166EA /* Constants.swift in Sources */,
+				CD8E055924BDF59A00FAE31F /* LoaderView.swift in Sources */,
+				CDCAD11224BCEBF4009166EA /* UIImage+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +527,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD8E055224BDEBB700FAE31F /* AsyncUseCaseTests.swift in Sources */,
+				CD8E055424BDEBED00FAE31F /* MockedAsyncUseCase.swift in Sources */,
 				CDA9F4C624BB570C00F9AD85 /* PitcherAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
