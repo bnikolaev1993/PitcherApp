@@ -17,7 +17,12 @@ public enum DomainError: Error {
     case generalWithInvalidResponse
     case generalWithDoNothing
 
+    // UseCase
     case useCaseTimeOut
+
+    // Video & Audio
+    case videoIsNotCopied
+    case presetsAreNotExtracted
 }
 
 extension DomainError: Equatable {
@@ -28,7 +33,10 @@ extension DomainError: Equatable {
              (.generalWithUnknownError, .generalWithUnknownError),
              (.generalWithTimeout, .generalWithTimeout),
              (.generalWithInvalidResponse, .generalWithInvalidResponse),
-             (.generalWithDoNothing, .generalWithDoNothing):
+             (.generalWithDoNothing, .generalWithDoNothing),
+             (.useCaseTimeOut, .useCaseTimeOut),
+             (.videoIsNotCopied, .videoIsNotCopied),
+             (.presetsAreNotExtracted, .presetsAreNotExtracted):
             return true
         default:
             return false

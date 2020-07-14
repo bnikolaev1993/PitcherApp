@@ -11,7 +11,7 @@ import Foundation
 import PromiseKit
 
 
-struct RemoveAudioFileFromVideoUseCaseInput {
+struct ExtractAudioAndVideoFromFileUseCaseInput {
     let videoAssetURL: URL
 
     init(videoAsset: URL) {
@@ -19,7 +19,7 @@ struct RemoveAudioFileFromVideoUseCaseInput {
     }
 }
 
-class ExtractAudioAndVideoFromFileUseCase: AsyncUseCase<RemoveAudioFileFromVideoUseCaseInput, AVTulip> {
+class ExtractAudioAndVideoFromFileUseCase: AsyncUseCase<ExtractAudioAndVideoFromFileUseCaseInput, AVTulip> {
     override func executeUseCase(resolver: Resolver<AVTulip>) {
         let videoAsset = AVURLAsset(url: input.videoAssetURL)
         let videoComposition = AVMutableComposition()

@@ -35,7 +35,7 @@ class MergeAudioAndVideoUseCase: AsyncUseCase<MergeAudioAndVideoUseCaseInput, UR
                                                                  preferredTrackID: kCMPersistentTrackID_Invalid)
 
         guard let aVideoAssetTrack: AVAssetTrack = aVideoAsset.tracks(withMediaType: .video).first, let aAudioAssetTrack: AVAssetTrack = aAudioAsset.tracks(withMediaType: .audio).first else {
-            resolver.reject(DomainError.generalWithDoNothing)
+            resolver.reject(DomainError.presetsAreNotExtracted)
             return
         }
 

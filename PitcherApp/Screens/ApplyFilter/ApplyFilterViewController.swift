@@ -128,6 +128,7 @@ extension ApplyFilterViewController: UICollectionViewDelegate, UICollectionViewD
                 return true
         }
         cell.setDeselected()
+        // Restore default Human color
         if prevCellIndexPath.row == 0 {
             let preset = mainView.viewModel.presets[prevCellIndexPath.row]
             cell.imageView.image = UIImage(named: preset.image)

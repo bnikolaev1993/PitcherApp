@@ -39,8 +39,8 @@ class ApplyFilterViewModel: BaseViewModel {
         DispatchQueue.global(qos: .userInitiated).async {
             let videoInput = CopyVideoAssetUseCaseInput(videoURL: self.videoManager.videoURL)
             _ = CopyVideoAssetUseCase(input: videoInput).act().then { url -> Promise<AVTulip> in
-                let input = RemoveAudioFileFromVideoUseCaseInput(videoAsset: url)
-                return RemoveAudioFileFromVideoUseCase(input: input).act()
+                let input = ExtractAudioAndVideoFromFileUseCaseInput(videoAsset: url)
+                return ExtractAudioAndVideoFromFileUseCase(input: input).act()
             }.then { tulpan -> Promise<(video: URL, audio: AVAsset)> in
                 let input = ApplyFilterUseCaseInput(avURLS: tulpan, configurationModel: configuration)
                 return ApplyFilterUseCase(input: input).act()
