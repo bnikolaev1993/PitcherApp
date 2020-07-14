@@ -26,8 +26,8 @@ class ApplyFilterViewModel: BaseViewModel {
                                     PresetModel(name: "Angel",
                                                 image: "angel",
                                                 configurationModel: ConfigurationModel(pitch: 500, overlap: 8, volume: 1, reverb: true)),
-                                    PresetModel(name: "Humster",
-                                                image: "humster",
+                                    PresetModel(name: "Hamster",
+                                                image: "hamster",
                                                 configurationModel: ConfigurationModel(pitch: 1200, overlap: 8, volume: 1))])
     }
     
