@@ -92,6 +92,17 @@ class ApplyFilterViewController: BaseViewController<ApplyFilterViewModel, ApplyF
 
         self.present(activityController, animated: true, completion: nil)
     }
+
+    func applyFilter(with configuration: ConfigurationModel) {
+        avPlayerController.player?.pause()
+        LoaderManager.shared.startNew(mainView)
+        mainView.viewModel.applyFilter(configuration: configuration) { [weak self] url in
+            guard let self = self else { return }
+            LoaderManager.shared.stopAllLoaders()
+            self.avPlayerController.player = AVPlayer(url: url)
+            self.avPlayerController.player?.play()
+        }
+    }
 }
 
 // MARK:- UICollectionViewDelegate, UICollectionViewDataSource
@@ -148,12 +159,7 @@ extension ApplyFilterViewController: UICollectionViewDelegate, UICollectionViewD
         }
         
         let configuration = mainView.viewModel.presets[indexPath.row].configuration
-        avPlayerController.player?.pause()
-        mainView.viewModel.applyFilter(configuration: configuration) { [weak self] url in
-            guard let self = self else { return }
-            self.avPlayerController.player = AVPlayer(url: url)
-            self.avPlayerController.player?.play()
-        }
+        self.applyFilter(with: configuration)
     }
 }
 

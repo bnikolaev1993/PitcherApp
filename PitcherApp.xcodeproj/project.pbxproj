@@ -17,6 +17,8 @@
 		CD37C23024BBDF1C00673C9B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD37C22F24BBDF1C00673C9B /* Utils.swift */; };
 		CD8E055224BDEBB700FAE31F /* AsyncUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E055124BDEBB700FAE31F /* AsyncUseCaseTests.swift */; };
 		CD8E055424BDEBED00FAE31F /* MockedAsyncUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E055324BDEBED00FAE31F /* MockedAsyncUseCase.swift */; };
+		CD8E055624BDF52E00FAE31F /* LoaderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E055524BDF52E00FAE31F /* LoaderManager.swift */; };
+		CD8E055924BDF59A00FAE31F /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8E055824BDF59A00FAE31F /* LoaderView.swift */; };
 		CDA9F4AF24BB570A00F9AD85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA9F4AE24BB570A00F9AD85 /* AppDelegate.swift */; };
 		CDA9F4B124BB570A00F9AD85 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA9F4B024BB570A00F9AD85 /* SceneDelegate.swift */; };
 		CDA9F4B324BB570A00F9AD85 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA9F4B224BB570A00F9AD85 /* MainViewController.swift */; };
@@ -68,6 +70,8 @@
 		CD37C22F24BBDF1C00673C9B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		CD8E055124BDEBB700FAE31F /* AsyncUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncUseCaseTests.swift; sourceTree = "<group>"; };
 		CD8E055324BDEBED00FAE31F /* MockedAsyncUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedAsyncUseCase.swift; sourceTree = "<group>"; };
+		CD8E055524BDF52E00FAE31F /* LoaderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderManager.swift; sourceTree = "<group>"; };
+		CD8E055824BDF59A00FAE31F /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		CDA9F4AB24BB570A00F9AD85 /* PitcherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PitcherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDA9F4AE24BB570A00F9AD85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDA9F4B024BB570A00F9AD85 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -171,6 +175,15 @@
 				CD8E055324BDEBED00FAE31F /* MockedAsyncUseCase.swift */,
 			);
 			path = UseCase;
+			sourceTree = "<group>";
+		};
+		CD8E055724BDF58C00FAE31F /* Loader */ = {
+			isa = PBXGroup;
+			children = (
+				CD8E055524BDF52E00FAE31F /* LoaderManager.swift */,
+				CD8E055824BDF59A00FAE31F /* LoaderView.swift */,
+			);
+			path = Loader;
 			sourceTree = "<group>";
 		};
 		CDA9F4A224BB570A00F9AD85 = {
@@ -296,6 +309,7 @@
 			isa = PBXGroup;
 			children = (
 				CDCAD10A24BCC7B6009166EA /* CustomCollectionViewCell.swift */,
+				CD8E055724BDF58C00FAE31F /* Loader */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -485,6 +499,7 @@
 				CDA9F4E924BB9C0B00F9AD85 /* ApplyFilterCoordinator.swift in Sources */,
 				CDA9F4F424BBA30F00F9AD85 /* BaseViewModel.swift in Sources */,
 				CD37C22D24BBDC2F00673C9B /* SaveAssetUseCase.swift in Sources */,
+				CD8E055624BDF52E00FAE31F /* LoaderManager.swift in Sources */,
 				CDCAD10224BC6D6C009166EA /* ApplyFilterUseCase.swift in Sources */,
 				CDCAD10624BC8B81009166EA /* MergeAudioAndVideoUseCase.swift in Sources */,
 				CD37C23024BBDF1C00673C9B /* Utils.swift in Sources */,
@@ -503,6 +518,7 @@
 				CD37C22724BBC7B400673C9B /* DomainError.swift in Sources */,
 				CDA9F4B124BB570A00F9AD85 /* SceneDelegate.swift in Sources */,
 				CDCAD10424BC8A11009166EA /* Constants.swift in Sources */,
+				CD8E055924BDF59A00FAE31F /* LoaderView.swift in Sources */,
 				CDCAD11224BCEBF4009166EA /* UIImage+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
