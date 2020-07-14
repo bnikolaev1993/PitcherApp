@@ -12,10 +12,10 @@ import Foundation
 import PromiseKit
 
 struct ApplyFilterUseCaseInput {
-    public let avURLS: AVTulip
-    public let configurationModel: ConfigurationModel
+     let avURLS: AVTulip
+     let configurationModel: ConfigurationModel
 
-    public init(avURLS: AVTulip, configurationModel: ConfigurationModel) {
+     init(avURLS: AVTulip, configurationModel: ConfigurationModel) {
         self.avURLS = avURLS
         self.configurationModel = configurationModel
     }
@@ -42,7 +42,7 @@ class ApplyFilterUseCase: AsyncUseCase<ApplyFilterUseCaseInput, (video: URL, aud
             akAudioPlayer.volume = input.configurationModel.volume
 
             guard let url = Constants.filteredAudioURL else {
-                resolver.reject(DomainError.generalWithDoNothing)
+                resolver.reject(DomainError.cantGetTheFinalVideo)
                 return
             }
 
@@ -50,7 +50,7 @@ class ApplyFilterUseCase: AsyncUseCase<ApplyFilterUseCaseInput, (video: URL, aud
                 do {
                     try FileManager.default.removeItem(atPath: url.path)
                 } catch {
-                    resolver.reject(DomainError.generalWithMessage("Copied Video is not removed"))
+                    resolver.reject(DomainError.cantGetTheFinalVideo)
                 }
             }
 
@@ -64,12 +64,12 @@ class ApplyFilterUseCase: AsyncUseCase<ApplyFilterUseCaseInput, (video: URL, aud
                         let asset = try AKAudioFile(forReading: url)
                         resolver.fulfill((video: self.input.avURLS.video, audio: asset.avAsset))
                     } catch {
-                        resolver.reject(DomainError.generalWithDoNothing)
+                        resolver.reject(DomainError.cantGetTheFinalVideo)
                     }
                 }
             })
         } catch {
-            resolver.reject(DomainError.generalWithDoNothing)
+            resolver.reject(DomainError.cantGetTheFinalVideo)
         }
     }
 }

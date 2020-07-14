@@ -27,6 +27,7 @@ class ApplyFilterViewController: BaseViewController<ApplyFilterViewModel, ApplyF
         return ApplyFilterViewModel(videoManager: VideoManager(videoURL: coordinator.videoURL))
     }
 
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 

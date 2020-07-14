@@ -65,12 +65,12 @@ class LoaderView: UIView {
         spinnerImageView.autoAlignAxis(toSuperviewAxis: .horizontal)
     }
 
-    public class func setCustomLoaderTint(color: UIColor) {
+     class func setCustomLoaderTint(color: UIColor) {
         LoaderView.sharedInstance
             .spinnerImageView.tintColor = color
     }
 
-    public class func resetDefaultLoaderTint() {
+     class func resetDefaultLoaderTint() {
         LoaderView.sharedInstance
             .spinnerImageView.tintColor = .gray
     }
@@ -79,7 +79,7 @@ class LoaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public class func show(_ view: UIView) {
+     class func show(_ view: UIView) {
         let progress = LoaderView.sharedInstance
 
         guard let window = view.window else {
@@ -111,7 +111,7 @@ class LoaderView: UIView {
         }
     }
 
-    public class func hide(_ completion: (() -> Void)? = nil) {
+     class func hide(_ completion: (() -> Void)? = nil) {
         let progress = LoaderView.sharedInstance
         switch progress.animationState {
         case .invisible, .fadingOut:

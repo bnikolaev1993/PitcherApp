@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum DomainError: Error {
+ enum DomainError: Error {
     // General
     case generalWithError(_: Error)
     case generalWithMessage(_ : String)
@@ -23,10 +23,11 @@ public enum DomainError: Error {
     // Video & Audio
     case videoIsNotCopied
     case presetsAreNotExtracted
+    case cantGetTheFinalVideo
 }
 
 extension DomainError: Equatable {
-  public static func == (lhs: DomainError, rhs: DomainError) -> Bool {
+   static func == (lhs: DomainError, rhs: DomainError) -> Bool {
         switch (lhs, rhs) {
         case (.generalWithError, .generalWithError),
              (generalWithMessage, .generalWithMessage),

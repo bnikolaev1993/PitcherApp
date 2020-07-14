@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class LoaderManager {
+ class LoaderManager {
     static let shared = LoaderManager()
 
     struct LoaderObject {}

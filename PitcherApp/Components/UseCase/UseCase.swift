@@ -9,19 +9,19 @@
 import Foundation
 import PromiseKit
 
-public enum UseCaseTimeOutSettings {
+enum UseCaseTimeOutSettings {
     case defaultTimeOut
     case timeOut(timeout: TimeInterval)
     case noTimeOut
 }
 
-open class UseCase<I, O> {
-  public  typealias InputType = I
-  public  typealias ReturnType = O
+class UseCase<I, O> {
+    typealias InputType = I
+    typealias ReturnType = O
 
-    public let input: InputType
+    let input: InputType
 
-    required public init(input: InputType) {
+    required init(input: InputType) {
         self.input = input
         self.addDomainErrorInterceptors()
     }
@@ -29,15 +29,15 @@ open class UseCase<I, O> {
     func addDomainErrorInterceptors() { }
 }
 
-public enum SyncUseCaseResult<O> {
+enum SyncUseCaseResult<O> {
     case success(value: O)
     case failure(error: DomainError)
 }
 
-open class SyncUseCase<I, O>: UseCase<I, O> {
+class SyncUseCase<I, O>: UseCase<I, O> {
 
-   @discardableResult
-   public final func act() -> SyncUseCaseResult<ReturnType> {
+    @discardableResult
+    final func act() -> SyncUseCaseResult<ReturnType> {
         let (res, err) = executeUseCase()
         if let res = res {
             return SyncUseCaseResult.success(value: res)
@@ -52,13 +52,13 @@ open class SyncUseCase<I, O>: UseCase<I, O> {
         return customExecuteUseCase()
     }
 
-    open func customExecuteUseCase() -> (ReturnType?, DomainError?) {
+    func customExecuteUseCase() -> (ReturnType?, DomainError?) {
         fatalError("If should custom execute, you must override this in subclass")
     }
 
 }
 
-open class AsyncUseCase<I, O>: UseCase<I, O> {
+class AsyncUseCase<I, O>: UseCase<I, O> {
 
     // Set the max allowed time duration and the error type that will be sent if the time limit is reached- if needed.
     fileprivate var timeoutSettings: UseCaseTimeOutSettings
@@ -66,14 +66,14 @@ open class AsyncUseCase<I, O>: UseCase<I, O> {
     fileprivate var (promise, resolver) = Promise<ReturnType>.pending()
     fileprivate var retainCycle: AsyncUseCase<I, O>?
 
-    public init(input: InputType, timeoutSettings: UseCaseTimeOutSettings) {
+    init(input: InputType, timeoutSettings: UseCaseTimeOutSettings) {
         self.timeoutSettings = timeoutSettings
         super.init(input: input)
         retainCycle = self
     }
 
-   public required convenience init(input: InputType) {
-       self.init(input: input, timeoutSettings: .defaultTimeOut)
+    required convenience init(input: InputType) {
+        self.init(input: input, timeoutSettings: .defaultTimeOut)
     }
 
     fileprivate func applyTimeOutSettngs(_ resolver: Resolver<O>) {
@@ -113,7 +113,7 @@ open class AsyncUseCase<I, O>: UseCase<I, O> {
         return self.timeoutSettings
     }
 
-    open func customExecuteUseCase(resolver: Resolver<ReturnType>) { }
+    func customExecuteUseCase(resolver: Resolver<ReturnType>) { }
 
     func executeUseCase(resolver: Resolver<ReturnType>) {
         customExecuteUseCase(resolver: resolver)
@@ -131,14 +131,14 @@ open class AsyncUseCase<I, O>: UseCase<I, O> {
         }
     }
 
-    public func handleFullfill(seal: Resolver<O>, result: O) {
+    func handleFullfill(seal: Resolver<O>, result: O) {
         if promise.isPending {
             seal.fulfill(result)
             retainCycle = nil
         }
     }
 
-    open func handleReject(seal: Resolver<O>, error: Error) {
+    func handleReject(seal: Resolver<O>, error: Error) {
         if promise.isPending {
             seal.reject(error)
             retainCycle = nil

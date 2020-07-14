@@ -11,9 +11,9 @@ import Foundation
 import PromiseKit
 
 struct CopyVideoAssetUseCaseInput {
-    public let videoURL: URL
+     let videoURL: URL
 
-    public init(videoURL: URL) {
+     init(videoURL: URL) {
         self.videoURL = videoURL
     }
 }
