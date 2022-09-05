@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol CoordinatorProtocol: class {
+protocol CoordinatorProtocol: AnyObject {
     associatedtype ViewController: UIViewController
     var viewController: ViewController? { get set }
     var root: UINavigationController? { get }

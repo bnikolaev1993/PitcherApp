@@ -34,11 +34,11 @@ class ApplyFilterUseCase: AsyncUseCase<ApplyFilterUseCaseInput, (video: URL, aud
 
             // Add reverberation if needed
             if input.configurationModel.reverb {
-                let reverb = AKReverb()
+                let reverb = AKReverb(nil)
                 akAudioPlayer >>> reverb >>> timePitch
             }
 
-            AudioKit.output = timePitch
+            AKManager.output = timePitch
             akAudioPlayer.volume = input.configurationModel.volume
 
             guard let url = Constants.filteredAudioURL else {
@@ -55,8 +55,8 @@ class ApplyFilterUseCase: AsyncUseCase<ApplyFilterUseCaseInput, (video: URL, aud
             }
 
             let outputFile = try AKAudioFile(forWriting: url, settings: [:])
-            _ = AudioKit.engine.isRunning
-            try AudioKit.renderToFile(outputFile, duration: akAudioPlayer.duration, prerender: {
+            _ = AKManager.engine.isRunning
+            try AKManager.renderToFile(outputFile, duration: akAudioPlayer.duration, prerender: {
                 akAudioPlayer.start()
             }, progress: { progress in
                 if progress == 1.0 {

@@ -35,6 +35,8 @@ class ApplyFilterViewController: BaseViewController<ApplyFilterViewModel, ApplyF
                                                                                target: self,
                                                                                action: #selector(shareVideo)),
                                                                animated: false)
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+        self.navigationController?.title = "PITCHER"
 
         mainView.collectionView.delegate = self
         mainView.collectionView.dataSource = self
@@ -67,8 +69,8 @@ class ApplyFilterViewController: BaseViewController<ApplyFilterViewModel, ApplyF
     override func updateViewConstraints() {
         if !didSetupConstraints {
 
-            if let view = navigationController?.view {
-                mainView.autoPinEdge(.top, to: .top, of: view)
+            if let view = navigationController?.navigationBar {
+                mainView.autoPinEdge(.top, to: .bottom, of: view)
                 mainView.autoPinEdge(toSuperviewSafeArea: .bottom)
                 mainView.autoPinEdge(toSuperviewSafeArea: .left)
                 mainView.autoPinEdge(toSuperviewSafeArea: .right)
